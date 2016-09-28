@@ -28,3 +28,8 @@ region=$(curl http://169.254.169.254/latest/dynamic/instance-identity/document |
 echo "<h1>$instanceId</h1>" > /var/www/html/index.html
 aws ec2 create-tags --resources "$instanceId" --tags Key=Name,Value="PROD-$instanceId" --region "$region"
 ```
+5:40
+Health check grace period: The length of time that auto scaling waits before checking an instance's health status.  
+The grace period begins when an instance comes into service  
+
+default cooldown: The number of seconds after a scaling activity completes before another can begin.
