@@ -32,4 +32,16 @@ aws ec2 create-tags --resources "$instanceId" --tags Key=Name,Value="PROD-$insta
 Health check grace period: The length of time that auto scaling waits before checking an instance's health status.  
 The grace period begins when an instance comes into service  
 
-default cooldown: The number of seconds after a scaling activity completes before another can begin.
+default cooldown: The number of seconds after a scaling activity completes before another can begin.  
+
+simple scaling policy vs (default, step-based) policy)  
+simple scaling policy's activity must obey cooldown time
+
+install load testing tool artillery:
+```
+npm install -g artillery
+```
+in host machine, send large request to target machine:
+```
+artillery quick --duration 1200 --rate 20 https://target
+```
