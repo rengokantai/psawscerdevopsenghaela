@@ -65,4 +65,37 @@ Quiz:
 
 ####26 Secondary indexes
 local secondary index: Has the same partition key as the table but a different sort key, can only be created when you create the table  
-global secondary index: An index with a partition key and a sort key that can be different from those on the table
+global secondary index: An index with a partition key and a sort key that can be different from those on the table  
+
+####27 Creating DynamoDB Tables
+scan->return all items  
+query->Partition key=, Sort key may <,=, or>  
+
+create global second index: indexes tab->create index
+
+###5
+####31Setting up a virtual
+04:00  
+For a net instance, set sg(NAT):  (actions->networking->change sg)
+SSH->22  
+All traffic->from VPC, such as 10.0.0.0/16  
+
+
+05:30
+create 2nd pri/pub subnet,this time we use NAT gateway instead NAT instance  
+subnet->public subnet, create new EIP
+
+####32 Creating a database tier for the app
+create sg(web):
+http->10.0.0.24 (first public subnet)
+http->10.0.2.24(second public subnet)  
+
+
+create rds sg:
+mysql/aurora->source=from previous sg(web)
+mysql/aurora->source=from previous sg(NAT)  
+
+
+02:00  
+create a new DB subnet group
+
