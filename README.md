@@ -105,3 +105,52 @@ go to intances->mysql->multiaz dep->step4 configure advanced settings:
 public accessible:no  
 vpc sg: choose (RDS)
 
+
+####33 Defing the launch config
+02:40 S3 policy  
+```
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Effect":"Allow",
+      "Action":["s3:ListBucket"],
+      "Resource":["arn:aws:s3:::bktname"]
+    },{
+       "Effect":"Allow",
+      "Action":["s3:GetBucket"],
+      "Resource":["arn:aws:s3:::bktname/*"]
+    }
+  ]
+}
+```
+then attach AmazonEC2RoleforSSM, 
+script
+```
+#!/bin/bash
+
+region=$(curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region | awk -F\" '{print $4}')
+
+yum update -y
+yum install -y httpd24 php56 php56-mysqlnd
+
+service httpd start
+
+cd /home/ec2-user/
+aws s3 cp s3://bktname/app.zip . --region "$region"
+unzip app.zip -d /var/www/html/
+
+curl https://amazon-ssm-us-west-2.s3.amazonaws.com/latest/linux_amd64/amazon-ssm-agent.rpm -o amazon-ssm-agent.rpm
+yum install -y amazon-ssm-agent.rpm
+```
+
+####34 Setting up a load balancer and auto scaling group
+01:25 create elb->add two public subnets
+02:25 create auto scaling group subnet->add two private subnets
+
+####35Validating the deployment
+Go to RDS, get the address, then connect:  
+in NAT instance,check
+```
+nslookup myapp.xxx.us-west-2.rds.amazonaws.com
+```
