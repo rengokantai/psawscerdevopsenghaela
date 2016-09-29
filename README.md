@@ -61,3 +61,8 @@ one 1kb write= 1 write capacity unit
 
 Quiz:  
 100 strongly consistent reads/sec for items 2.5kb in size.->2.5/4=0.625=1(read capacity unit per item)* 100 reads/sec=100 read capacity units
+
+
+####26 Secondary indexes
+local secondary index: Has the same partition key as the table but a different sort key, can only be created when you create the table  
+global secondary index: An index with a partition key and a sort key that can be different from those on the table
