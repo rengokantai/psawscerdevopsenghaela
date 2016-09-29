@@ -1,0 +1,22 @@
+{
+    "Customers": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "CustomerId": {"N": "101"},
+                    "Name": {"S": "Dave"},
+                    "State": {"S": "AZ"}
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "CustomerId": {"N": "102"},
+                    "Name": {"S": "John"},
+                    "State": {"S": "CA"}
+                }
+            }
+        }
+    ]
+}
