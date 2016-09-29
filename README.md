@@ -45,3 +45,16 @@ in host machine, send large request to target machine:
 ```
 artillery quick --duration 1200 --rate 20 https://target
 ```
+####24 Getting started with DynamoDB
+02:40 ->single attr primary key  
+03:20-> double attr primary key  
+If pk is consists of 1 attr, then it is partition key  
+If is consists of 2 attr, then is partiion key and sort key  
+partitions are seperate chunks of storage
+
+####25 Provisioned throughput
+Evetually consistent reads->response might not reflect the results of a recently completed write operation  
+Strongly consistent reads->Response reflecting the updates from all prior write operations that were successful  
+1 strongly consistent read of 4kb=1 read capacity unit
+2 eventually consistent read of 4kb=1 read capacity unit  
+one 1kb weite= 1 write capacity unit
