@@ -91,11 +91,17 @@ http->10.0.0.24 (first public subnet)
 http->10.0.2.24(second public subnet)  
 
 
-create rds sg:
+create (rds) sg:
 mysql/aurora->source=from previous sg(web)
 mysql/aurora->source=from previous sg(NAT)  
 
 
 02:00  
-create a new DB subnet group
+create a new DB subnet group:  
+az=a, subnetid=2 priv subnets (add one by one)  
+
+02:47  
+go to intances->mysql->multiaz dep->step4 configure advanced settings:  
+public accessible:no  
+vpc sg: choose (RDS)
 
