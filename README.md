@@ -57,4 +57,7 @@ Evetually consistent reads->response might not reflect the results of a recently
 Strongly consistent reads->Response reflecting the updates from all prior write operations that were successful  
 1 strongly consistent read of 4kb=1 read capacity unit
 2 eventually consistent read of 4kb=1 read capacity unit  
-one 1kb weite= 1 write capacity unit
+one 1kb write= 1 write capacity unit  
+
+Quiz:  
+100 strongly consistent reads/sec for items 2.5kb in size.->2.5/4=0.625=1(read capacity unit per item)* 100 reads/sec=100 read capacity units
